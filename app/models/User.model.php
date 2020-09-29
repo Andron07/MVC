@@ -23,6 +23,15 @@ class User
         }
     }
 
+    // Find use rby email
+    public function getUserById($id)
+    {
+        $this->db->query("SELECT * FROM `users` WHERE `users`.`id` = :id");
+        $this->db->bind(':id', $id);
+        $row = $this->db->single();
+        return $row;
+    }
+
     public function register($data)
     {
         $this->db->query('INSERT INTO users (name, email, password) values(:name, :email, :password)');

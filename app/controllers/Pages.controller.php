@@ -9,6 +9,10 @@ class Pages extends Controller
 
     public function index()
     {
+        if(isLoggedIn()){
+            redirect('posts');
+        }
+        
         $data = [
             'title' => 'SharedPosts',
             'description' => 'Simple MVC framework built for Shared posts',
